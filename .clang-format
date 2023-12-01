@@ -1,0 +1,21 @@
+# Format Style Options - Created with Clang Power Tools
+---
+Language: Cpp
+BasedOnStyle: Google
+AccessModifierOffset: -4
+AlignTrailingComments: true
+AlignConsecutiveMacros: true
+# AlignConsecutiveAssignments: true
+AllowShortCaseLabelsOnASingleLine: false
+# AllowShortBlocksOnASingleLine: true
+AllowShortBlocksOnASingleLine : Empty
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLoopsOnASingleLine : false
+AllowShortIfStatementsOnASingleLine : WithoutElse
+AlwaysBreakBeforeMultilineStrings: false
+ColumnLimit: 130
+IndentWidth : 4
+SpacesBeforeTrailingComments: 4
+TabWidth: 4
+CommentPragmas:  '^lint'
+...

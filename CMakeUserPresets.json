@@ -1,0 +1,52 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 23,
+        "patch": 0
+    },
+    "include": [
+        "CMakePresets.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "tuero-ubuntu22-core",
+            "inherits": ["core", "gcc"],
+            "cacheVariables": {
+                "CMAKE_PREFIX_PATH": "/usr/local/libtorch",
+                "CMAKE_CUDA_FLAGS": "--allow-unsupported-compiler",
+                "CMAKE_CUDA_HOST_COMPILER": "/usr/bin/g++-12"
+            }
+        },
+        {
+            "name": "ubuntu22-gcc-release",
+            "inherits": ["tuero-ubuntu22-core", "release"]
+        },
+        {
+            "name": "ubuntu22-gcc-py-release",
+            "inherits": ["tuero-ubuntu22-core", "py-release"]
+        },
+        {
+            "name": "ubuntu22-gcc-debug",
+            "inherits": ["tuero-ubuntu22-core", "debug"]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "ubuntu22-gcc-release",
+            "displayName": "Ubuntu 22.04 gcc release",
+            "configurePreset": "ubuntu22-gcc-release"
+        },
+        {
+            "name": "ubuntu22-gcc-py-release",
+            "displayName": "Ubuntu 22.04 gcc release for Python bindings",
+            "configurePreset": "ubuntu22-gcc-py-release"
+        },
+        {
+            "name": "ubuntu22-gcc-debug",
+            "displayName": "Ubuntu 22.04 gcc debug",
+            "configurePreset": "ubuntu22-gcc-debug"
+        }
+    ]
+}
+

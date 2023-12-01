@@ -1,0 +1,88 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 23,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "core",
+            "hidden": true,
+            "generator": "Unix Makefiles",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "ABSL_PROPAGATE_CXX_STD": "ON",
+                "CMAKE_POSITION_INDEPENDENT_CODE": "ON",
+                "CXX_STANDARD_REQUIRED": "ON"
+            }
+        },
+        {
+            "name": "release",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/build/Release",
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": "-Wall -Wextra -O3 -DNDEBUG",
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "debug",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/build/Debug",
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": "-Wall -Wextra -O0 -g -pg -ggdb",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "py-release",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": "-Wall -Wextra -O3 -DNDEBUG",
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "gcc",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_CC_COMPILER": "gcc"
+            }
+        },
+        {
+            "name": "gcc-release",
+            "displayName": "Release (GCC)",
+            "inherits": ["core", "release", "gcc"]
+        },
+        {
+            "name": "gcc-py-release",
+            "displayName": "Release (GCC) for Python Bindings",
+            "inherits": ["core", "py-release", "gcc"]
+        },
+        {
+            "name": "gcc-debug",
+            "displayName": "Debug (GCC)",
+            "inherits": ["core", "debug", "gcc"]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "gcc-release",
+            "displayName": "gcc release",
+            "configurePreset": "gcc-release"
+        },
+        {
+            "name": "gcc-py-release",
+            "displayName": "gcc python release",
+            "configurePreset": "gcc-py-release"
+        },
+        {
+            "name": "gcc-debug",
+            "displayName": "gcc debug",
+            "configurePreset": "gcc-debug"
+        }
+    ]
+}
+
